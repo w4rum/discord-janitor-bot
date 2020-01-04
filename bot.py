@@ -18,6 +18,9 @@ async def on_ready():
 
 @bot.command(aliases = ["wipe", "clean", "cleanse", "purify", "purge"])
 async def nuke(ctx, amount: Optional[int]):
+    if ctx.channel.category.id not in config.CATEGORY_IDS:
+        return
+
     await ctx.channel.purge(limit=amount)
 
 
